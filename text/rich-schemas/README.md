@@ -244,10 +244,10 @@ attribute for either the SDK or libvcx. All encoded attribute values which
 are passed directly to the SDK were encoded by the software external to the
 SDK, relying on implicit understanding of how the external software should
 encode them. In libvcx, if the attribute value at the time it is passed into
-libvcx is a number, it will be encoded as a 256-bit integer. If the attribute value
-is a string, the value will be hashed using SHA-256, thereby encoding it as
-a 256-bit integer. The resulting 256-bit integers may then be passed to the 
-SDK and signed.
+libvcx is a number, it will be encoded as a 256-bit integer. If the attribute
+value is a string, the value will be hashed using SHA-256, thereby encoding
+it as a 256-bit integer. The resulting 256-bit integers may then be passed
+to the SDK and signed.
 
 The introduction of rich schemas and their associated greater range of
 possible attribute value data types require correspondingly rich encoding
