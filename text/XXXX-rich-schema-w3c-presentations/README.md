@@ -32,9 +32,10 @@ presentations into compliance with that standard.
 ### Interoperability
 Compliance with the Verifiable Credentials Data Model 1.0 introduces the
 possibility of interoperability with other credential presentations that also
-comply with the standard. The verifiable credential data model specification is
-limited to defining the data structure of verifiable credentials and
-presentations. This includes defining extension points, such as "proof."
+comply with the standard that use similar proof mechanisms. The verifiable
+credential data model specification is limited to defining the data structure
+of verifiable credentials and presentations. This includes defining extension
+points, such as "proof."
 
 
 ## Tutorial
@@ -64,8 +65,8 @@ properties:
 #### @context 
 JSON-LD Context. The value MUST be an ordered set where 
  - the first item MUST be a URI with the value `https://www.w3.org/2018/credentials/v1`.
- - other items SHOULD be the `@id` of contexts used by the rich schemas that
-corresponding to each included anonymous credential. 
+ - subsequent other items SHOULD be the `@id` of contexts used by the rich
+schemas that correspond to each included anonymous credential. 
  (see [Rich Schema Context](https://github.com/hyperledger/indy-hipe/tree/master/text/0149-rich-schema-schema#context)).
 
 
@@ -77,10 +78,10 @@ presentations (see `https://www.w3.org/2018/credentials/v1` context).
 - `@id` of the presentation definition for which this is a valid presentation.
 
 #### verifiableCredential
-The value contains an unordered list derived credentials, each of which consists
-of (nested) claims about each subject of the credential and the corresponding
-values. Each derived credential MUST follow the guidelines for Indy anonymous
-credentials defined in
+The value contains an unordered list of derived credentials, each of which
+consists of (nested) claims about each subject of the credential and the
+corresponding values. Each derived credential MUST follow the guidelines
+for Indy anonymous credentials defined in
 [Indy HIPE 0160: W3C Compatible Verifiable Credentials.](https://github.com/hyperledger/indy-hipe/tree/master/text/0160-rich-schema-w3c-credentials)
 
 The set of claims included in the derived credentials MUST match the ones
@@ -127,7 +128,7 @@ in the presentation.
 A summary of explicit assumptions for W3C-compatible verifiable presentations in
 Indy: 
 
-- Indy only supports zero-knowledge-based credentials (anoncreds). The only
+- Indy currently supports only zero-knowledge-based credentials (anoncreds). The only
 zero-knowledge signature type currently supported is the Camenisch-Lysyanskaya
 signature (either version 1.0 or 2.0). Therefore all credentials included in
 a verifiable presentation are derived credentials
@@ -230,8 +231,8 @@ look as follows:
 ```
 {
   "@context": [
-    "did:sov:2f9F8ZmxuvDqRiqqY29x6dx9oU4qwFTkPbDpWtwGbdUsrCD",
-    "https://www.w3.org/2018/credentials/v1"
+    "https://www.w3.org/2018/credentials/v1",
+    "did:sov:2f9F8ZmxuvDqRiqqY29x6dx9oU4qwFTkPbDpWtwGbdUsrCD"
   ]
   "type": ["VerifiablePresentation", "did:sov:4e9F8ZmxuvDqRiqqY29x6dx9oU4qwFTkPbDpWtwGbdUsrCD"],
   "verifiableCredential": [
@@ -258,7 +259,7 @@ look as follows:
 }
 ```
 
-Let's consider every field in details:
+Let's consider every field in detail:
 - `@context` points to two contexts: one common for all W3C credentials,
  and one used by the rich schema of the source credential.
  - `type` is an array of two values: the first is common for all W3C
